@@ -22,7 +22,8 @@ module.exports = function( grunt ) {
                     src: [
                         '<%= dirs.dev.base %>/*.html',
                         '<%= dirs.dev.css %>/css/*.css',
-                        '<%= dirs.dev.js %>/js/**/*.js'
+                        '<%= dirs.dev.js %>/js/**/*.js',
+                        '<%= dirs.dev.templates %>/*.js'
                     ]
                 },
 
@@ -52,7 +53,7 @@ module.exports = function( grunt ) {
             templates: {
                 files: [
                     '<%= dirs.dev.templates %>/helpers/*.js',
-                    '<%= dirs.dev.templates %>/*.hbs'
+                    '<%= dirs.dev.templates %>/**/*.hbs'
                 ],
 
                 tasks: [ 'handlebars:compile' ]
@@ -93,10 +94,10 @@ module.exports = function( grunt ) {
                     amd: [ 'handlebars', 'helpers' ],
 
                     processName: function( filePath ) {
-                        var pieces = filePath.split( '/' );
-                        return pieces[ pieces.length - 1 ].split( '.' )[0];
+                        return filePath.replace(/^..\/app\/js\/templates\//, '').replace(/\.hbs$/, '');
                     }
                 },
+
                 files: {
                     '<%= dirs.dev.templates %>/templates.js': '<%= dirs.dev.templates %>/*.hbs'
                 }
