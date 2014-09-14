@@ -21,8 +21,8 @@ module.exports = function( grunt ) {
                 bsFiles: {
                     src: [
                         '<%= dirs.dev.base %>/*.html',
-                        '<%= dirs.dev.css %>/css/*.css',
-                        '<%= dirs.dev.js %>/js/**/*.js',
+                        '<%= dirs.dev.css %>/*.css',
+                        '<%= dirs.dev.js %>/**/*.js',
                         '<%= dirs.dev.templates %>/*.js'
                     ]
                 },
