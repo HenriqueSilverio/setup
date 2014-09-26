@@ -1,7 +1,7 @@
 'use strict';
 
 require( [ 'config' ], function() {
-    require( [ 'app' ], function( App ) {
-        App.init();
+    require( [ 'app' ], function( MyApp ) {
+        MyApp.start();
     } );
 } );

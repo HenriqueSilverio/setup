@@ -15,11 +15,14 @@
     "underscore": "~1.7.0",
     "handlebars": "~2.0.0",
     "requirejs": "~2.1.14",
-    "marionette": "~2.1.0",
+    "marionette": "2.2.0",
     "backbone-validation": "~0.9.1"
   },
   "devDependencies": {
     "qunit": "~1.15.0",
     "sinon": "~1.10.3"
+  },
+  "resolutions": {
+    "marionette": "2.2.0"
   }
 }

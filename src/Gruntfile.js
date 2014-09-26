@@ -12,6 +12,7 @@ module.exports = function( grunt ) {
                 fonts: '../app/fonts',
                 img: '../app/img',
                 js: '../app/js',
+                modules: '../app/js/modules',
                 templates: '../app/js/templates'
             }
         },
@@ -52,8 +53,7 @@ module.exports = function( grunt ) {
 
             templates: {
                 files: [
-                    '<%= dirs.dev.templates %>/helpers/*.js',
-                    '<%= dirs.dev.templates %>/**/*.hbs'
+                    '<%= dirs.dev.modules %>/**/*.hbs'
                 ],
 
                 tasks: [ 'handlebars:compile' ]
@@ -91,15 +91,17 @@ module.exports = function( grunt ) {
         handlebars: {
             compile: {
                 options: {
-                    amd: [ 'handlebars', 'helpers' ],
+                    amd: [ 'handlebars' ],
 
                     processName: function( filePath ) {
-                        return filePath.replace(/^..\/app\/js\/templates\//, '').replace(/\.hbs$/, '');
+                        return filePath.replace(/^..\/app\/js\/modules\//, '')
+                                       .replace(/\/templates/, '')
+                                       .replace(/\.hbs$/, '');
                     }
                 },
 
                 files: {
-                    '<%= dirs.dev.templates %>/templates.js': '<%= dirs.dev.templates %>/*.hbs'
+                    '<%= dirs.dev.templates %>/templates.js': '<%= dirs.dev.modules %>/**/*.hbs'
                 }
             }
         }
@@ -108,4 +110,6 @@ module.exports = function( grunt ) {
     grunt.initConfig( configs );
 
     grunt.registerTask( 'default', [ 'browserSync:dev', 'watch' ] );
+
+    grunt.registerTask( 'build', [ 'compass', 'jshint', 'handlebars' ] );
 };

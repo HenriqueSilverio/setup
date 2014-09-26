@@ -3,3 +3,4 @@ src/*.sublime-*
 src/node_modules
 src/bower_components
 src/.sass-cache
+app/js/templates

@@ -35,6 +35,7 @@
     "predef": [
         "define",
         "require",
-        "requirejs"
+        "requirejs",
+        "Marionette"
     ]
 }

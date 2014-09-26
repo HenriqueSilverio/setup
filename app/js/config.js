@@ -1,6 +1,8 @@
 'use strict';
 
 requirejs.config({
+    baseUrl: 'js',
+
     paths: {
         jquery      : 'libs/jquery.min',
         underscore  : 'libs/underscore.min',
